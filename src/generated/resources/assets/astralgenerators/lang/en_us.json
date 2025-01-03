@@ -1,3 +1,11 @@
 {
+  "block.astralgenerators.calorite_block": "Calorite Block",
+  "block.astralgenerators.cobalt_block": "Cobalt Block",
+  "item.astralgenerators.calorite_ingot": "Calorite Ingot",
+  "item.astralgenerators.calorite_nugget": "Calorite Nugget",
+  "item.astralgenerators.calorite_sheet": "Calorite Sheet",
+  "item.astralgenerators.cobalt_ingot": "Cobalt Ingot",
+  "item.astralgenerators.cobalt_nugget": "Cobalt Nugget",
+  "item.astralgenerators.cobalt_sheet": "Cobalt Sheet",
   "itemGroup.astralgenerators.general": "Astral Generators"
 }

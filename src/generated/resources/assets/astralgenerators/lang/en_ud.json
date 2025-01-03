@@ -1,3 +1,11 @@
 {
+  "block.astralgenerators.calorite_block": "\u029E\u0254o\u05DF\u15FA \u01DD\u0287\u0131\u0279o\u05DF\u0250\u0186",
+  "block.astralgenerators.cobalt_block": "\u029E\u0254o\u05DF\u15FA \u0287\u05DF\u0250qo\u0186",
+  "item.astralgenerators.calorite_ingot": "\u0287obuI \u01DD\u0287\u0131\u0279o\u05DF\u0250\u0186",
+  "item.astralgenerators.calorite_nugget": "\u0287\u01DDbbnN \u01DD\u0287\u0131\u0279o\u05DF\u0250\u0186",
+  "item.astralgenerators.calorite_sheet": "\u0287\u01DD\u01DD\u0265S \u01DD\u0287\u0131\u0279o\u05DF\u0250\u0186",
+  "item.astralgenerators.cobalt_ingot": "\u0287obuI \u0287\u05DF\u0250qo\u0186",
+  "item.astralgenerators.cobalt_nugget": "\u0287\u01DDbbnN \u0287\u05DF\u0250qo\u0186",
+  "item.astralgenerators.cobalt_sheet": "\u0287\u01DD\u01DD\u0265S \u0287\u05DF\u0250qo\u0186",
   "itemGroup.astralgenerators.general": "s\u0279o\u0287\u0250\u0279\u01DDu\u01DD\u2141 \u05DF\u0250\u0279\u0287s\u2C6F"
 }
