@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "astralgenerators:flowing_steam",
+    "astralgenerators:steam",
+    "astralgenerators:flowing_energy",
+    "astralgenerators:energy"
+  ]
+}
