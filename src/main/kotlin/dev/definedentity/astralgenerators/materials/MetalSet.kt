@@ -7,55 +7,117 @@ import dev.definedentity.astralgenerators.AstralGenerators.REGISTRATE
 import dev.definedentity.astralgenerators.utils.TextFormatting
 import net.minecraft.client.color.block.BlockColor
 import net.minecraft.client.color.item.ItemColor
+import net.minecraft.client.renderer.RenderType
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Block
-import net.minecraftforge.client.model.generators.ModelFile
 
 class MetalSet(
-    private val name: String, private val color: Int
+    private val name: String,
+    private val color: Int
 ) {
-    private val itemColor: Supplier<ItemColor> = Supplier {
+    private val itemColorSupplier: Supplier<ItemColor> = Supplier {
         ItemColor { _, _ -> color }
     }
-    private val blockColor: Supplier<BlockColor> = Supplier {
+
+    private val blockColorSupplier: Supplier<BlockColor> = Supplier {
         BlockColor { _, _, _, _ -> color }
     }
 
-    val NUGGET: ItemEntry<Item> = createItem("nugget")
-    val INGOT: ItemEntry<Item> = createItem("ingot")
-    val SHEET: ItemEntry<Item> = createItem("sheet")
+    val NUGGET: ItemEntry<Item> = createItemWithOverlay("nugget")
+    val INGOT: ItemEntry<Item> = createItemWithOverlay("ingot")
+    val SHEET: ItemEntry<Item> = createItemWithOverlay("sheet")
+    val ROD: ItemEntry<Item> = createItemNoOverlay("rod")
 
-    val BLOCK: BlockEntry<Block> =
-        REGISTRATE.block("${name}_block", ::Block).lang(TextFormatting.toEnglishName("${name}_block")).item()
-            .color { Supplier { ItemColor { _, _ -> color } } }.build().properties { p ->
+    val BLOCK: BlockEntry<Block> = createBlock("block")
+    val FRAME: BlockEntry<Block> = createTranslucentBlock("frame")
+
+    private fun createItemWithOverlay(id: String): ItemEntry<Item> {
+        val fullName = "${name}_$id"
+        return REGISTRATE.item(fullName, ::Item)
+            .lang(TextFormatting.toEnglishName(fullName))
+            .model { ctx, prov ->
+                prov.generated(
+                    { ctx.get() },
+                    prov.modLoc("item/material_sets/$id"),
+                    prov.modLoc("item/material_sets/${id}_overlay"),
+                    prov.modLoc("item/material_sets/${id}_secondary")
+                )
+            }
+            .color { itemColorSupplier }
+            .register()
+    }
+
+    private fun createItemNoOverlay(id: String): ItemEntry<Item> {
+        val fullName = "${name}_$id"
+        return REGISTRATE.item(fullName, ::Item)
+            .lang(TextFormatting.toEnglishName(fullName))
+            .model { ctx, prov ->
+                prov.generated(
+                    { ctx.get() },
+                    prov.modLoc("item/material_sets/$id"),
+                    prov.modLoc("item/material_sets/${id}_secondary")
+                )
+            }
+            .color { itemColorSupplier }
+            .register()
+    }
+
+    private fun createBlock(id: String): BlockEntry<Block> {
+        val fullName = "${name}_$id"
+        return REGISTRATE.block(fullName, ::Block)
+            .lang(TextFormatting.toEnglishName(fullName))
+            .item()
+            .color { itemColorSupplier }
+            .build()
+            .properties { p ->
                 p.requiresCorrectToolForDrops().strength(1.0f, 6.0f)
-            }.blockstate { ctx, prov ->
+            }
+            .blockstate { ctx, prov ->
                 prov.simpleBlock(
                     ctx.entry,
                     prov.models()
                         .withExistingParent(ctx.name, "block/block")
-                        .texture("all", prov.modLoc("block/material_sets/dull/block").path)
+                        .texture("all", prov.modLoc("block/material_sets/$id").path)
                         .texture("particle", "#all")
                         .element()
-                        .allFaces { direction, faceBuilder ->
+                        .allFaces { _, faceBuilder ->
                             faceBuilder.tintindex(0)
-                            faceBuilder.texture(
-                                "#all"
-                            )
-                        }.end()
+                            faceBuilder.texture("#all")
+                        }
+                        .end()
                 )
-            }.color { blockColor }.register()
+            }
+            .color { blockColorSupplier }
+            .register()
+    }
 
-    private fun createItem(suffix: String): ItemEntry<Item> {
-        val fullName = "${name}_$suffix"
-
-        return REGISTRATE.item(fullName, ::Item).lang(TextFormatting.toEnglishName(fullName)).model { ctx, prov ->
-            prov.generated(
-                { ctx.get() },
-                prov.modLoc("item/material_sets/bright/$suffix"),
-                prov.modLoc("item/material_sets/bright/${suffix}_overlay"),
-                prov.modLoc("item/material_sets/bright/${suffix}_secondary")
-            )
-        }.color { itemColor }.register()
+    private fun createTranslucentBlock(id: String): BlockEntry<Block> {
+        val fullName = "${name}_$id"
+        return REGISTRATE.block(fullName, ::Block)
+            .lang(TextFormatting.toEnglishName(fullName))
+            .item()
+            .color { itemColorSupplier }
+            .build()
+            .properties { p ->
+                p.requiresCorrectToolForDrops().strength(1.0f, 6.0f).noOcclusion()
+            }
+            .blockstate { ctx, prov ->
+                prov.simpleBlock(
+                    ctx.entry,
+                    prov.models()
+                        .withExistingParent(ctx.name, "block/block")
+                        .texture("all", prov.modLoc("block/material_sets/$id").path)
+                        .texture("particle", "#all")
+                        .element()
+                        .allFaces { _, faceBuilder ->
+                            faceBuilder.tintindex(0)
+                            faceBuilder.texture("#all")
+                        }
+                        .end()
+                )
+            }
+            .color { blockColorSupplier }
+            .addLayer { Supplier { RenderType.translucent() } }
+            .register()
     }
 }

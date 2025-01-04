@@ -1,0 +1,13 @@
+{
+    "ctm": {
+        "ctm_version": 1,
+        "type": "CTM",
+        "layer": "CUTOUT",
+        "textures": [
+            "astralgenerators:block/glasses/ess_glass_ctm"
+        ],
+        "extra": {
+            "connect_inside": true
+        }
+    }
+}

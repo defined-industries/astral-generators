@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "side": "astralgenerators:block/batteries/tier_2/side",
+    "end": "astralgenerators:block/batteries/tier_2/top"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/block",
   "textures": {
-    "all": "astralgenerators:block/material_sets/dull/block",
+    "all": "astralgenerators:block/material_sets/block",
     "particle": "#all"
   },
   "elements": [

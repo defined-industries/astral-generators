@@ -1,6 +1,9 @@
 package dev.definedentity.astralgenerators
 
 import com.tterrag.registrate.Registrate
+import dev.definedentity.astralgenerators.blocks.AGBatteries
+import dev.definedentity.astralgenerators.blocks.AGBlocks
+import dev.definedentity.astralgenerators.blocks.AGGlasses
 import dev.definedentity.astralgenerators.materials.AGMaterials
 import dev.definedentity.astralgenerators.utils.AGIdentifier
 import net.fabricmc.api.ModInitializer
@@ -20,7 +23,7 @@ object AstralGenerators : ModInitializer {
     override fun onInitialize() {
         initializeItemGroups()
 
-        AGMaterials.init()
+        AGBlocks.init()
 
         REGISTRATE.register()
     }

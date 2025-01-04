@@ -1,0 +1,22 @@
+{
+  "ctm": {
+    "ctm_version": 1,
+    "type": "CTM",
+    "layer": "SOLID",
+    "textures": [
+      "astralgenerators:block/casings/ess_casing_ctm"
+    ],
+    "extra": {
+      "connect_to": [
+        {
+          "block": "astralgenerators:ess_casing"
+        },
+        {
+          "block": "astralgenerators:ess_input_hatch"
+        },  {
+                     "block": "astralgenerators:ess_output_hatch"
+                   }
+      ]
+    }
+  }
+}

@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "astralgenerators:item/material_sets/bright/sheet",
-    "layer1": "astralgenerators:item/material_sets/bright/sheet_overlay",
-    "layer2": "astralgenerators:item/material_sets/bright/sheet_secondary"
+    "layer0": "astralgenerators:item/material_sets/sheet",
+    "layer1": "astralgenerators:item/material_sets/sheet_overlay",
+    "layer2": "astralgenerators:item/material_sets/sheet_secondary"
   }
 }
