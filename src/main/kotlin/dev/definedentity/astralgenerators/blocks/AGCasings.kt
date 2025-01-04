@@ -12,6 +12,9 @@ import net.minecraftforge.client.model.generators.ModelFile
 object AGCasings {
 
     val ESS_CASING = create("ess_casing", "ESS Casing").register()
+    val STEEL_CASING = create("steel_casing", "Steel Casing").register()
+
+    val STEEL_PIPE_CASING = create("steel_pipe_casing", "Steel Pipe Casing").register()
 
     private fun create(id: String, displayName: String): BlockBuilder<Block, Registrate> {
         return REGISTRATE.block(id, ::Block)

@@ -18,6 +18,7 @@ import net.minecraft.world.level.material.Material
 object AGGlasses {
 
     val ESS_GLASS = create("ess_glass", "ESS Glass").register()
+    val STRUCTURAL_GLASS = create("structural_glass", "Structural Glass").register()
 
     fun create(
         name: String,

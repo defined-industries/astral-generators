@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "astralgenerators:ess_glass"
+    "astralgenerators:ess_glass",
+    "astralgenerators:structural_glass"
   ]
 }
