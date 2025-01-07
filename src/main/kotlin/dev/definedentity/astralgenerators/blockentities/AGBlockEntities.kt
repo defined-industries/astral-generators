@@ -11,5 +11,8 @@ object AGBlockEntities {
     val ASSEMBLER_ENTITY =
         BlockEntityEntry.cast<AssemblerEntity>(AGMachines.ASSEMBLER.getSibling(Registry.BLOCK_ENTITY_TYPE_REGISTRY))
 
+    val DISASSEMBLER_ENTITY =
+        BlockEntityEntry.cast<AssemblerEntity>(AGMachines.DISASSEMBLER.getSibling(Registry.BLOCK_ENTITY_TYPE_REGISTRY))
+
     fun init() {}
 }

@@ -1,4 +1,5 @@
 {
   "block.astralgenerators.assembler": "Assembler",
+  "block.astralgenerators.disassembler": "Disassembler",
   "itemGroup.astralgenerators.general": "Astral Generators"
 }
