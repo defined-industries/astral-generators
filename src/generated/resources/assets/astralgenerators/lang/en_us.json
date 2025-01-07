@@ -2,5 +2,6 @@
   "block.astralgenerators.assembler": "Assembler",
   "block.astralgenerators.disassembler": "Disassembler",
   "block.astralgenerators.stellite_casing": "Stellite Casing",
+  "item.astralgenerators.astralnomicon": "Astralnomicon",
   "itemGroup.astralgenerators.general": "Astral Generators"
 }
