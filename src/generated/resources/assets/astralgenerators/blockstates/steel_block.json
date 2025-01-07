@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "astralgenerators:block/steel_block"
+    }
+  }
+}

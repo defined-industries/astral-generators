@@ -1,12 +1,12 @@
 {
-  "parent": "astralgenerators:block/cube/tinted/default",
-  "textures": {
-    "particle": "#side",
-    "up": "#end",
-    "down": "#end",
-    "north": "#side",
-    "east": "#side",
-    "south": "#side",
-    "west": "#side"
-  }
+	"parent": "astralgenerators:block/cube/tinted/default",
+	"textures": {
+		"particle": "#side",
+		"up": "#end",
+		"down": "#end",
+		"north": "#side",
+		"east": "#side",
+		"south": "#side",
+		"west": "#side"
+	}
 }

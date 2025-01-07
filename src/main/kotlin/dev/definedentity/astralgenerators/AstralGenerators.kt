@@ -4,6 +4,7 @@ import com.tterrag.registrate.Registrate
 import dev.definedentity.astralgenerators.blockentities.AGBlockEntities
 import dev.definedentity.astralgenerators.blocks.AGBlocks
 import dev.definedentity.astralgenerators.items.AGItems
+import dev.definedentity.astralgenerators.material_sets.AGMaterialSets
 import dev.definedentity.astralgenerators.utils.AGIdentifier
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
@@ -26,6 +27,7 @@ object AstralGenerators : ModInitializer {
         initializeItemGroups()
 
         AGBlockEntities.init()
+        AGMaterialSets.init()
         AGBlocks.init()
         AGItems.init()
 
