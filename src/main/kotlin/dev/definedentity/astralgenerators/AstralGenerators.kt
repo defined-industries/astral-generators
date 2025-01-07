@@ -3,8 +3,6 @@ package dev.definedentity.astralgenerators
 import com.tterrag.registrate.Registrate
 import dev.definedentity.astralgenerators.blockentities.AGBlockEntities
 import dev.definedentity.astralgenerators.blocks.AGBlocks
-import dev.definedentity.astralgenerators.liquids.AGFluids
-import dev.definedentity.astralgenerators.multiblock.MultiBlockManager
 import dev.definedentity.astralgenerators.utils.AGIdentifier
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
@@ -26,11 +24,8 @@ object AstralGenerators : ModInitializer {
     override fun onInitialize() {
         initializeItemGroups()
 
-        MultiBlockManager.init()
-
         AGBlockEntities.init()
         AGBlocks.init()
-        AGFluids.init()
 
         REGISTRATE.register()
     }

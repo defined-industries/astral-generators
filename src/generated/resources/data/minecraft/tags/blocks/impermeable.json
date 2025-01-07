@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "astralgenerators:structural_glass",
-    "astralgenerators:ess_glass",
-    "astralgenerators:ess_input_hatch",
-    "astralgenerators:ess_output_hatch"
-  ]
-}
