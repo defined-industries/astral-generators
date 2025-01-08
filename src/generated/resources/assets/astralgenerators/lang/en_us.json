@@ -1,10 +1,12 @@
 {
   "block.astralgenerators.assembler": "Assembler",
+  "block.astralgenerators.boiler_casing": "Boiler Casing",
   "block.astralgenerators.calorite_block": "Calorite Block",
   "block.astralgenerators.calorite_frame": "Calorite Frame",
   "block.astralgenerators.cobalt_block": "Cobalt Block",
   "block.astralgenerators.cobalt_frame": "Cobalt Frame",
   "block.astralgenerators.disassembler": "Disassembler",
+  "block.astralgenerators.steam_turbine_casing": "Steam Turbine Casing",
   "block.astralgenerators.steel_block": "Steel Block",
   "block.astralgenerators.steel_frame": "Steel Frame",
   "block.astralgenerators.stellarite_block": "Stellarite Block",

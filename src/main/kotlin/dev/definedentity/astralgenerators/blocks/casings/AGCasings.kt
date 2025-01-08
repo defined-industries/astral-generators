@@ -13,5 +13,20 @@ object AGCasings {
         )
     }.simpleItem().register()
 
+    val BOILER_CASING = REGISTRATE.block("boiler_casing", ::Block).lang("Boiler Casing").blockstate { ctx, prov ->
+        prov.simpleBlock(
+            ctx.entry,
+            prov.models().cubeAll(ctx.name, prov.modLoc("block/casings/${ctx.name}"))
+        )
+    }.simpleItem().register()
+
+    val STEAM_TURBINE_CASING =
+        REGISTRATE.block("steam_turbine_casing", ::Block).lang("Steam Turbine Casing").blockstate { ctx, prov ->
+            prov.simpleBlock(
+                ctx.entry,
+                prov.models().cubeAll(ctx.name, prov.modLoc("block/casings/${ctx.name}"))
+            )
+        }.simpleItem().register()
+
     fun init() {}
 }

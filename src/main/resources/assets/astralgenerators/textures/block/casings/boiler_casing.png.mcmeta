@@ -1,0 +1,17 @@
+{
+  "ctm": {
+    "ctm_version": 1,
+    "type": "CTM",
+    "layer": "SOLID",
+    "textures": [
+      "astralgenerators:block/casings/boiler_casing_ctm"
+    ],
+    "extra": {
+      "connect_to": [
+        {
+          "block": "astralgenerators:boiler_casing"
+        }
+      ]
+    }
+  }
+}
