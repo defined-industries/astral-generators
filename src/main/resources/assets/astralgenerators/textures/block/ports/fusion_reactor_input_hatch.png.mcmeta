@@ -4,7 +4,7 @@
     "type": "CTM",
     "layer": "SOLID",
     "textures": [
-      "astralgenerators:block/casings/fusion_reactor_casing_ctm"
+      "astralgenerators:block/ports/fusion_reactor_input_hatch_ctm"
     ],
     "extra": {
       "connect_to": [

@@ -4,7 +4,7 @@
     "type": "CTM",
     "layer": "SOLID",
     "textures": [
-      "astralgenerators:block/casings/steam_turbine_casing_ctm"
+      "astralgenerators:block/ports/steam_turbine_output_hatch_ctm"
     ],
     "extra": {
       "connect_to": [

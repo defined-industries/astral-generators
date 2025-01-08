@@ -19,18 +19,22 @@ object AGPorts {
     val BOILER_OUTPUT_HATCH =
         create("boiler_output_hatch", ::BoilerOutputHatch).register()
 
+    val FUSION_REACTOR_INPUT_HATCH =
+        create("fusion_reactor_input_hatch", ::BoilerInputHatch).register()
+    val FUSION_REACTOR_OUTPUT_HATCH =
+        create("fusion_reactor_output_hatch", ::BoilerInputHatch).register()
+
+    val STEAM_TURBINE_INPUT_HATCH =
+        create("steam_turbine_input_hatch", ::BoilerInputHatch).register()
+    val STEAM_TURBINE_OUTPUT_HATCH =
+        create("steam_turbine_output_hatch", ::BoilerInputHatch).register()
+
     /**
-     * val STEAM_TURBINE_INPUT_HATCH =
-     *         register("boiler_input_hatch", ::BoilerInputHatch).register()
-     *     val STEAM_TURBINE_OUTPUT_HATCH =
-     *         register("boiler_input_hatch", ::BoilerInputHatch).register()
+     *
      *     val STEAM_TURBINE_ENERGY_OUTPUT_HATCH =
      *         register("boiler_energy_output_hatch", ::BoilerInputHatch).register()
      *
-     *     val FUSION_REACTOR_INPUT_HATCH =
-     *         register("fusion_reactor_input_hatch", ::BoilerInputHatch).register()
-     *     val FUSION_REACTOR_OUTPUT_HATCH =
-     *         register("fusion_reactor_output_hatch", ::BoilerInputHatch).register()
+     *
      *     val FUSION_REACTOR_INPUT_BUS =
      *         register("fusion_reactor_input_bus", ::BoilerInputHatch).register()
      *     val FUSION_REACTOR_OUTPUT_BUS =
