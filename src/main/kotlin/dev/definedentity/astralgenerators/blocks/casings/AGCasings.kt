@@ -28,5 +28,13 @@ object AGCasings {
             )
         }.simpleItem().register()
 
+    val FUSION_CASING =
+        REGISTRATE.block("fusion_casing", ::Block).lang("Fusion Casing").blockstate { ctx, prov ->
+            prov.simpleBlock(
+                ctx.entry,
+                prov.models().cubeAll(ctx.name, prov.modLoc("block/casings/${ctx.name}"))
+            )
+        }.simpleItem().register()
+
     fun init() {}
 }
