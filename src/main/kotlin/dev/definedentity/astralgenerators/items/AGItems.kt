@@ -5,7 +5,7 @@ import net.minecraft.world.item.Item
 
 object AGItems {
 
-    val ASTRALNOMICON = REGISTRATE.item("astralnomicon", ::Item).register()
+    val ASTRALNOMICON = REGISTRATE.item("astralnomicon", ::Astralnomicon).register()
 
     fun init() {}
 }

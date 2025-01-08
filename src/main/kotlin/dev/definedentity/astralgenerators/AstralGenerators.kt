@@ -3,6 +3,7 @@ package dev.definedentity.astralgenerators
 import com.tterrag.registrate.Registrate
 import dev.definedentity.astralgenerators.blockentities.AGBlockEntities
 import dev.definedentity.astralgenerators.blocks.AGBlocks
+import dev.definedentity.astralgenerators.blocks.casings.AGCasings
 import dev.definedentity.astralgenerators.items.AGItems
 import dev.definedentity.astralgenerators.material_sets.AGMaterialSets
 import dev.definedentity.astralgenerators.utils.AGIdentifier
@@ -20,7 +21,7 @@ object AstralGenerators : ModInitializer {
     val REGISTRATE = Registrate.create(MOD_ID)
 
     val ITEM_GROUP = FabricItemGroupBuilder.build(AGIdentifier("general")) {
-        Items.DIRT.asItem().defaultInstance
+        AGCasings.STELLITE_CASING.get().asItem().defaultInstance
     }
 
     override fun onInitialize() {

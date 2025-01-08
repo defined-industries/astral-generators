@@ -9,4 +9,5 @@ repositories {
 	maven { url "https://cursemaven.com" }
 	maven { url "https://mvn.devos.one/snapshots/" }
 	maven { url "https://server.bbkr.space/artifactory/libs-release" }
+	maven { url "https://maven.blamejared.com" }
 }
