@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "astralgenerators:stellarite_block"
+    }
+  ],
+  "result": {
+    "item": "astralgenerators:stellarite_ingot",
+    "count": 9
+  }
+}

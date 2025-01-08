@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "tag": "c:ingots/cobalt"
+    }
+  },
+  "result": {
+    "item": "astralgenerators:cobalt_block"
+  }
+}

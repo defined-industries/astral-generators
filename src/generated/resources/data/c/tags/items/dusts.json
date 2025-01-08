@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "astralgenerators:cobalt_dust",
+    "astralgenerators:calorite_dust",
+    "astralgenerators:steel_dust",
+    "astralgenerators:stellarite_dust"
+  ]
+}

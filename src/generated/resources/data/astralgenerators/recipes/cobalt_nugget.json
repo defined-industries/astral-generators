@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:ingots/cobalt"
+    }
+  ],
+  "result": {
+    "item": "astralgenerators:cobalt_nugget",
+    "count": 9
+  }
+}

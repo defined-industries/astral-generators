@@ -7,6 +7,7 @@ import dev.definedentity.astralgenerators.blocks.coils.AGCoils
 import dev.definedentity.astralgenerators.blocks.glasses.AGGlasses
 import dev.definedentity.astralgenerators.blocks.machines.AGMachines
 import dev.definedentity.astralgenerators.blocks.machines.Assembler
+import dev.definedentity.astralgenerators.blocks.ports.AGPorts
 import dev.definedentity.astralgenerators.utils.AGIdentifier
 
 object AGBlocks {
@@ -15,5 +16,6 @@ object AGBlocks {
         AGCasings.init()
         AGCoils.init()
         AGGlasses.init()
+        AGPorts.init()
     }
 }

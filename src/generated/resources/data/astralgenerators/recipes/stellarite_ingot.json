@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "tag": "c:nuggets/stellarite"
+    }
+  },
+  "result": {
+    "item": "astralgenerators:stellarite_ingot"
+  }
+}

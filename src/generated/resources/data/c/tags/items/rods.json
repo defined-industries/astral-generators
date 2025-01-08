@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "astralgenerators:cobalt_rod",
+    "astralgenerators:calorite_rod",
+    "astralgenerators:steel_rod",
+    "astralgenerators:stellarite_rod"
+  ]
+}

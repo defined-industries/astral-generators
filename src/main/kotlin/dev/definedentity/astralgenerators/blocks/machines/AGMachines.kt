@@ -1,5 +1,7 @@
 package dev.definedentity.astralgenerators.blocks.machines
 
+import com.tterrag.registrate.Registrate
+import com.tterrag.registrate.builders.BlockBuilder
 import com.tterrag.registrate.providers.DataGenContext
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider
 import dev.definedentity.astralgenerators.AstralGenerators.REGISTRATE
@@ -7,8 +9,13 @@ import dev.definedentity.astralgenerators.blockentities.machines.AssemblerEntity
 import dev.definedentity.astralgenerators.blockentities.machines.DisassemblerEntity
 import dev.definedentity.astralgenerators.utils.AGDirections
 import dev.definedentity.astralgenerators.utils.AGIdentifier
+import dev.definedentity.astralgenerators.utils.TextFormatting
 import net.minecraft.core.Direction
+import net.minecraft.tags.BlockTags
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.SoundType
+import net.minecraft.world.level.block.state.BlockBehaviour
+import net.minecraft.world.level.material.Material
 import net.minecraftforge.client.model.generators.ConfiguredModel
 
 object AGMachines {
@@ -30,8 +37,6 @@ object AGMachines {
                 createModelWithTopActive(ctx, prov, false, direction, rotationY)
             }
         }.simpleItem().register()
-
-    fun init() {}
 
     private fun <T : Block> createModelWithTopActive(
         ctx: DataGenContext<Block, T>,
@@ -57,4 +62,6 @@ object AGMachines {
             .rotationY(rotationY)
             .addModel()
     }
+
+    fun init() {}
 }

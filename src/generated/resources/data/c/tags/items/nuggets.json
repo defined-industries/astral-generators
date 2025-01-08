@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "astralgenerators:cobalt_nugget",
+    "astralgenerators:calorite_nugget",
+    "astralgenerators:steel_nugget",
+    "astralgenerators:stellarite_nugget"
+  ]
+}

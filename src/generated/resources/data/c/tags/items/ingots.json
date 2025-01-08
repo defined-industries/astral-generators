@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "astralgenerators:cobalt_ingot",
+    "astralgenerators:calorite_ingot",
+    "astralgenerators:steel_ingot",
+    "astralgenerators:stellarite_ingot"
+  ]
+}
