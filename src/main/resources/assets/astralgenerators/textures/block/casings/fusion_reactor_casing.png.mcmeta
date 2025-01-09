@@ -9,6 +9,9 @@
     "extra": {
       "connect_to": [
         {
+          "block": "astralgenerators:fusion_reactor_controller"
+        },
+        {
           "block": "astralgenerators:fusion_reactor_casing"
         },
         {

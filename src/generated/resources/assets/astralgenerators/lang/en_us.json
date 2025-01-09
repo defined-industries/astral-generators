@@ -11,6 +11,7 @@
   "block.astralgenerators.disassembler": "Disassembler",
   "block.astralgenerators.fusion_reactor_casing": "Fusion Reactor Casing",
   "block.astralgenerators.fusion_reactor_coil": "Fusion Reactor Coil",
+  "block.astralgenerators.fusion_reactor_controller": "Fusion Reactor Controller",
   "block.astralgenerators.fusion_reactor_energy_input_hatch": "Fusion Reactor Energy Input Hatch",
   "block.astralgenerators.fusion_reactor_energy_output_hatch": "Fusion Reactor Energy Output Hatch",
   "block.astralgenerators.fusion_reactor_glass": "Fusion Reactor Glass",

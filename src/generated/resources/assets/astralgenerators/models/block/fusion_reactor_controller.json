@@ -1,0 +1,18 @@
+{
+  "parent": "astralgenerators:block/cube_2_layer/default",
+  "textures": {
+    "particle": "astralgenerators:block/casings/fusion_reactor_casing",
+    "bot_down": "astralgenerators:block/casings/fusion_reactor_casing",
+    "bot_up": "astralgenerators:block/casings/fusion_reactor_casing",
+    "bot_east": "astralgenerators:block/casings/fusion_reactor_casing",
+    "bot_west": "astralgenerators:block/casings/fusion_reactor_casing",
+    "bot_south": "astralgenerators:block/casings/fusion_reactor_casing",
+    "bot_north": "astralgenerators:block/casings/fusion_reactor_casing",
+    "top_down": "astralgenerators:block/casings/fusion_reactor_casing",
+    "top_up": "astralgenerators:block/casings/fusion_reactor_casing",
+    "top_east": "astralgenerators:block/casings/fusion_reactor_casing",
+    "top_west": "astralgenerators:block/casings/fusion_reactor_casing",
+    "top_south": "astralgenerators:block/casings/fusion_reactor_casing",
+    "top_north": "astralgenerators:block/machines/fusion_reactor_controller"
+  }
+}

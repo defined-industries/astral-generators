@@ -21,7 +21,7 @@ object AstralGenerators : ModInitializer {
     val REGISTRATE = Registrate.create(MOD_ID)
 
     val ITEM_GROUP = FabricItemGroupBuilder.build(AGIdentifier("general")) {
-        AGCasings.STELLITE_CASING.get().asItem().defaultInstance
+        AGItems.ASTRALNOMICON.get().defaultInstance
     }
 
     override fun onInitialize() {
