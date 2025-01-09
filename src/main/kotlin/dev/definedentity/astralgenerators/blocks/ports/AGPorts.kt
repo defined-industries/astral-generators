@@ -6,28 +6,30 @@ import dev.definedentity.astralgenerators.AstralGenerators.REGISTRATE
 import dev.definedentity.astralgenerators.blocks.ports.hatch.BoilerInputHatch
 import dev.definedentity.astralgenerators.blocks.ports.hatch.BoilerOutputHatch
 import dev.definedentity.astralgenerators.utils.TextFormatting
+import net.minecraft.client.renderer.RenderType
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.material.Material
 import net.minecraft.world.level.material.MaterialColor
+import java.util.function.Supplier
 
 object AGPorts {
 
     val BOILER_INPUT_HATCH =
-        create("boiler_input_hatch", ::BoilerInputHatch).register()
+        create("boiler_input_hatch", "boiler_casing", ::BoilerInputHatch).register()
     val BOILER_OUTPUT_HATCH =
-        create("boiler_output_hatch", ::BoilerOutputHatch).register()
+        create("boiler_output_hatch", "boiler_casing", ::BoilerOutputHatch, false).register()
 
     val FUSION_REACTOR_INPUT_HATCH =
-        create("fusion_reactor_input_hatch", ::BoilerInputHatch).register()
+        create("fusion_reactor_input_hatch", "fusion_reactor_casing", ::BoilerInputHatch).register()
     val FUSION_REACTOR_OUTPUT_HATCH =
-        create("fusion_reactor_output_hatch", ::BoilerInputHatch).register()
+        create("fusion_reactor_output_hatch", "fusion_reactor_casing", ::BoilerInputHatch, false).register()
 
     val STEAM_TURBINE_INPUT_HATCH =
-        create("steam_turbine_input_hatch", ::BoilerInputHatch).register()
+        create("steam_turbine_input_hatch", "steam_turbine_casing", ::BoilerInputHatch).register()
     val STEAM_TURBINE_OUTPUT_HATCH =
-        create("steam_turbine_output_hatch", ::BoilerInputHatch).register()
+        create("steam_turbine_output_hatch", "steam_turbine_casing", ::BoilerInputHatch, false).register()
 
     /**
      *
@@ -47,8 +49,10 @@ object AGPorts {
 
     private fun <T : Block> create(
         name: String,
+        casingName: String,
         displayName: String,
-        blockSupplier: (BlockBehaviour.Properties) -> T
+        blockSupplier: (BlockBehaviour.Properties) -> T,
+        isInput: Boolean = true
     ): BlockBuilder<T, Registrate> {
         return REGISTRATE.block(name, blockSupplier).lang(displayName)
             .properties {
@@ -59,16 +63,23 @@ object AGPorts {
             }.blockstate { ctx, prov ->
                 prov.simpleBlock(
                     ctx.entry,
-                    prov.models().cubeAll(ctx.name, prov.modLoc("block/ports/${ctx.name}"))
+                    prov.models().withExistingParent(ctx.name, prov.modLoc("block/cube_2_layer/all"))
+                        .texture("bot_all", prov.modLoc("block/casings/${casingName}"))
+                        .texture(
+                            "top_all",
+                            prov.modLoc("block/overlays/overlay_fluid_${if (isInput) "input" else "output"}")
+                        )
                 )
-            }.simpleItem()
+            }.simpleItem().addLayer { Supplier { RenderType.translucent() } }
     }
 
     private fun <T : Block> create(
         name: String,
-        blockSupplier: (BlockBehaviour.Properties) -> T
+        casingName: String,
+        blockSupplier: (BlockBehaviour.Properties) -> T,
+        isInput: Boolean = true
     ): BlockBuilder<Block, Registrate> {
-        return create(name, TextFormatting.toEnglishName(name), blockSupplier)
+        return create(name, casingName, TextFormatting.toEnglishName(name), blockSupplier, isInput)
     }
 
     fun init() {}

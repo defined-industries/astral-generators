@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "astralgenerators:block/cube_2_layer/all",
   "textures": {
-    "all": "astralgenerators:block/ports/boiler_output_hatch"
+    "bot_all": "astralgenerators:block/casings/boiler_casing",
+    "top_all": "astralgenerators:block/overlays/overlay_fluid_output"
   }
 }
