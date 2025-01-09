@@ -1,0 +1,7 @@
+{
+  "parent": "astralgenerators:block/cube_2_layer/all",
+  "textures": {
+    "bot_all": "astralgenerators:block/casings/fusion_reactor_casing",
+    "top_all": "astralgenerators:block/overlays/overlay_item_input"
+  }
+}

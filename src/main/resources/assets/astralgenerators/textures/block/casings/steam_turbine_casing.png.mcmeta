@@ -16,6 +16,9 @@
         },
         {
           "block": "astralgenerators:steam_turbine_output_hatch"
+        },
+        {
+          "block": "astralgenerators:steam_turbine_energy_output_hatch"
         }
       ]
     }
