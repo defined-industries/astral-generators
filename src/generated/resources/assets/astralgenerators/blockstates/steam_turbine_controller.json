@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "active=false,facing=north": {
+      "model": "astralgenerators:block/steam_turbine_controller"
+    },
+    "active=true,facing=north": {
+      "model": "astralgenerators:block/steam_turbine_controller_active"
+    },
+    "active=false,facing=south": {
+      "model": "astralgenerators:block/steam_turbine_controller",
+      "y": 180
+    },
+    "active=true,facing=south": {
+      "model": "astralgenerators:block/steam_turbine_controller_active",
+      "y": 180
+    },
+    "active=false,facing=west": {
+      "model": "astralgenerators:block/steam_turbine_controller",
+      "y": 270
+    },
+    "active=true,facing=west": {
+      "model": "astralgenerators:block/steam_turbine_controller_active",
+      "y": 270
+    },
+    "active=false,facing=east": {
+      "model": "astralgenerators:block/steam_turbine_controller",
+      "y": 90
+    },
+    "active=true,facing=east": {
+      "model": "astralgenerators:block/steam_turbine_controller_active",
+      "y": 90
+    }
+  }
+}

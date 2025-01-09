@@ -16,6 +16,9 @@
         },
         {
           "block": "astralgenerators:boiler_output_hatch"
+        },
+        {
+          "block": "astralgenerators:boiler_controller"
         }
       ]
     }

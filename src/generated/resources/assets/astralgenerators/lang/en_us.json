@@ -1,6 +1,7 @@
 {
   "block.astralgenerators.assembler": "Assembler",
   "block.astralgenerators.boiler_casing": "Boiler Casing",
+  "block.astralgenerators.boiler_controller": "Boiler Controller",
   "block.astralgenerators.boiler_input_hatch": "Boiler Input Hatch",
   "block.astralgenerators.boiler_output_hatch": "Boiler Output Hatch",
   "block.astralgenerators.calorite_block": "Calorite Block",
@@ -18,6 +19,7 @@
   "block.astralgenerators.fusion_reactor_output_bus": "Fusion Reactor Output Bus",
   "block.astralgenerators.fusion_reactor_output_hatch": "Fusion Reactor Output Hatch",
   "block.astralgenerators.steam_turbine_casing": "Steam Turbine Casing",
+  "block.astralgenerators.steam_turbine_controller": "Steam Turbine Controller",
   "block.astralgenerators.steam_turbine_energy_output_hatch": "Steam Turbine Energy Output Hatch",
   "block.astralgenerators.steam_turbine_input_hatch": "Steam Turbine Input Hatch",
   "block.astralgenerators.steam_turbine_output_hatch": "Steam Turbine Output Hatch",

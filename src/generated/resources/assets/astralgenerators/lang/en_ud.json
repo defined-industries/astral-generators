@@ -1,6 +1,7 @@
 {
   "block.astralgenerators.assembler": "\u0279\u01DD\u05DFq\u026F\u01DDss\u2C6F",
   "block.astralgenerators.boiler_casing": "bu\u0131s\u0250\u0186 \u0279\u01DD\u05DF\u0131o\u15FA",
+  "block.astralgenerators.boiler_controller": "\u0279\u01DD\u05DF\u05DFo\u0279\u0287uo\u0186 \u0279\u01DD\u05DF\u0131o\u15FA",
   "block.astralgenerators.boiler_input_hatch": "\u0265\u0254\u0287\u0250H \u0287nduI \u0279\u01DD\u05DF\u0131o\u15FA",
   "block.astralgenerators.boiler_output_hatch": "\u0265\u0254\u0287\u0250H \u0287nd\u0287nO \u0279\u01DD\u05DF\u0131o\u15FA",
   "block.astralgenerators.calorite_block": "\u029E\u0254o\u05DF\u15FA \u01DD\u0287\u0131\u0279o\u05DF\u0250\u0186",
@@ -18,6 +19,7 @@
   "block.astralgenerators.fusion_reactor_output_bus": "sn\u15FA \u0287nd\u0287nO \u0279o\u0287\u0254\u0250\u01DD\u1D1A uo\u0131sn\u2132",
   "block.astralgenerators.fusion_reactor_output_hatch": "\u0265\u0254\u0287\u0250H \u0287nd\u0287nO \u0279o\u0287\u0254\u0250\u01DD\u1D1A uo\u0131sn\u2132",
   "block.astralgenerators.steam_turbine_casing": "bu\u0131s\u0250\u0186 \u01DDu\u0131q\u0279n\u27D8 \u026F\u0250\u01DD\u0287S",
+  "block.astralgenerators.steam_turbine_controller": "\u0279\u01DD\u05DF\u05DFo\u0279\u0287uo\u0186 \u01DDu\u0131q\u0279n\u27D8 \u026F\u0250\u01DD\u0287S",
   "block.astralgenerators.steam_turbine_energy_output_hatch": "\u0265\u0254\u0287\u0250H \u0287nd\u0287nO \u028Eb\u0279\u01DDu\u018E \u01DDu\u0131q\u0279n\u27D8 \u026F\u0250\u01DD\u0287S",
   "block.astralgenerators.steam_turbine_input_hatch": "\u0265\u0254\u0287\u0250H \u0287nduI \u01DDu\u0131q\u0279n\u27D8 \u026F\u0250\u01DD\u0287S",
   "block.astralgenerators.steam_turbine_output_hatch": "\u0265\u0254\u0287\u0250H \u0287nd\u0287nO \u01DDu\u0131q\u0279n\u27D8 \u026F\u0250\u01DD\u0287S",
