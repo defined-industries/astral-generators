@@ -40,7 +40,8 @@
 		"java": ">=17",
 		"fabric-api": "${fabric_version}",
 		"fabric-language-kotlin": "*",
-		"xenon": "*"
+		"xenon": "*",
+		"patchouli": "*"
 	},
 	"suggests": {
 		"ctm-refabricated": "*"

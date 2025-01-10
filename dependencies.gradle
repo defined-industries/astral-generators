@@ -15,6 +15,7 @@ def modDeps(DependencyHandler deps) {
     deps.modImplementation "com.github.definedentity:xenon:${project.xenon_version}"
     deps.modImplementation "vazkii.patchouli:Patchouli:${project.patchouli_version}"
 
+    deps.modApi(deps.include("io.github.cottonmc:LibGui:${project.libgui_version}"))
     deps.modApi(deps.include("io.github.fabricators_of_create:Porting-Lib:$port_lib_version+$minecraft_version"))
     deps.modApi(deps.include("com.tterrag.registrate_fabric:Registrate:$registrate_version")) {
         exclude(group: "io.github.fabricators_of_create")
