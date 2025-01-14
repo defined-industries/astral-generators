@@ -2,8 +2,11 @@ package dev.definedentity.astralgenerators
 
 import com.tterrag.registrate.Registrate
 import dev.definedentity.astralgenerators.blockentities.AGBlockEntities
+import dev.definedentity.astralgenerators.blockentities.AGBlockEntities.ASSEMBLER_ENTITY
+import dev.definedentity.astralgenerators.blockentities.machines.AssemblerEntity
 import dev.definedentity.astralgenerators.blocks.AGBlocks
 import dev.definedentity.astralgenerators.blocks.casings.AGCasings
+import dev.definedentity.astralgenerators.gui.AGMenuTypes
 import dev.definedentity.astralgenerators.items.AGItems
 import dev.definedentity.astralgenerators.material_sets.AGMaterialSets
 import dev.definedentity.astralgenerators.utils.AGIdentifier
@@ -11,6 +14,7 @@ import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.minecraft.world.item.Items
 import org.slf4j.LoggerFactory
+import team.reborn.energy.api.EnergyStorage
 
 object AstralGenerators : ModInitializer {
     val MOD_ID: String = "astralgenerators"
@@ -31,8 +35,17 @@ object AstralGenerators : ModInitializer {
         AGMaterialSets.init()
         AGBlocks.init()
         AGItems.init()
+        AGMenuTypes.init()
 
         REGISTRATE.register()
+
+        integrateBlockEntitiesSide()
+    }
+
+    private fun integrateBlockEntitiesSide() {
+        EnergyStorage.SIDED.registerForBlockEntity({ blockEntity: AssemblerEntity, direction ->
+            blockEntity.energyStorage
+        }, ASSEMBLER_ENTITY.get())
     }
 
     private fun initializeItemGroups() {

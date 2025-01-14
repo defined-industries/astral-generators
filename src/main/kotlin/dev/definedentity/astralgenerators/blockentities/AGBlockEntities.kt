@@ -9,6 +9,7 @@ import dev.definedentity.astralgenerators.blockentities.machines.DisassemblerEnt
 import dev.definedentity.astralgenerators.blocks.AGBlocks
 import dev.definedentity.astralgenerators.blocks.machines.AGMachines
 import net.minecraft.core.Registry
+import team.reborn.energy.api.EnergyStorage
 
 object AGBlockEntities {
 
@@ -27,5 +28,6 @@ object AGBlockEntities {
     val FUSION_REACTOR_CONTROLLER_ENTITY =
         BlockEntityEntry.cast<FusionReactorControllerEntity>(AGMachines.FUSION_REACTOR_CONTROLLER.getSibling(Registry.BLOCK_ENTITY_TYPE_REGISTRY))
 
-    fun init() {}
+    fun init() {
+    }
 }
