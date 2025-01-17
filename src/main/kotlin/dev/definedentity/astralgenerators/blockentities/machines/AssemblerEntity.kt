@@ -25,6 +25,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu
 import net.minecraft.world.inventory.ContainerData
 import net.minecraft.world.inventory.ContainerLevelAccess
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
@@ -39,21 +40,38 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
 
     companion object {
         const val CONTAINER_SIZE = 10
-        const val CONTAINER_DATA_SIZE = 2
+        const val CONTAINER_DATA_SIZE = 4
 
         const val ENERGY_CAPACITY = 100000
         const val MAX_ENERGY_INPUT = 10000
+
+        const val MAX_PROGRESS = 100
+
+        fun tick(level: Level, pos: BlockPos, state: BlockState, entity: AssemblerEntity) {
+            if (level.isClientSide) {
+                // tick on client side
+                return
+            }
+            println("tick")
+            // tick on server side
+        }
     }
+
+    private var progress = 0
 
     private val containerData = object : ContainerData {
         /**
          * 0 is current energy
          * 1 is max energy
+         * 2 is current progress
+         * 3 is max progress
          */
         override fun get(index: Int): Int {
             return when (index) {
                 0 -> energyStorage.amount.toInt()
                 1 -> energyStorage.capacity.toInt()
+                2 -> progress
+                3 -> MAX_PROGRESS
                 else -> -1
             }
         }
@@ -62,11 +80,12 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
             when (index) {
                 0 -> energyStorage.amount = value.toLong()
                 1 -> energyStorage.capacity = value.toLong()
+                2 -> progress = value
             }
         }
 
         override fun getCount(): Int {
-            return 2
+            return CONTAINER_DATA_SIZE
         }
     }
 
@@ -79,7 +98,6 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
     }
 
     override fun setChanged() {
-        println(energyStorage.amount)
     }
 
     override fun getPropertyDelegate(): ContainerData {

@@ -5,4 +5,6 @@ import net.minecraft.network.chat.Component
 import net.minecraft.world.entity.player.Inventory
 
 class AssemblerScreen(menu: AssemblerMenu, inv: Inventory, title: Component) :
-    CottonInventoryScreen<AssemblerMenu>(menu, inv.player, title) {}
+    CottonInventoryScreen<AssemblerMenu>(menu, inv.player, title) {
+        
+    }

@@ -40,7 +40,7 @@ class Assembler(properties: Properties) : BaseEntityBlock(properties) {
         state: BlockState,
         blockEntityType: BlockEntityType<T?>
     ): BlockEntityTicker<T?>? {
-        return super.getTicker(level, state, blockEntityType)
+        return createTickerHelper(blockEntityType, AGBlockEntities.ASSEMBLER_ENTITY.get(), AssemblerEntity::tick)
     }
 
     override fun onRemove(state: BlockState, level: Level, pos: BlockPos, newState: BlockState, isMoving: Boolean) {
@@ -52,6 +52,7 @@ class Assembler(properties: Properties) : BaseEntityBlock(properties) {
                 level.updateNeighbourForOutputSignal(pos, this)
             }
         }
+        super.onRemove(state, level, pos, newState, isMoving)
     }
 
     override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block, BlockState>) {
