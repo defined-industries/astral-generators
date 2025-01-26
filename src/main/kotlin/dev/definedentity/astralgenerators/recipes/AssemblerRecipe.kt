@@ -45,29 +45,28 @@ class AssemblerRecipe(val recipeId: ResourceLocation, val output: ItemStack, val
     }
 
     override fun getSerializer(): RecipeSerializer<*> {
-        return Serializer.INSTANCE()
+        return Serializer.INSTANCE
     }
 
     override fun getType(): RecipeType<*> {
-        return Type.INSTANCE()
+        return Type.INSTANCE
     }
 
-    class Type() : RecipeType<AssemblerRecipe> {
+    class Type private constructor() : RecipeType<AssemblerRecipe> {
         companion object {
-            fun INSTANCE() = Type()
-            fun ID() = "assembler"
+            val INSTANCE: Type = Type()
+            const val ID = "assembler"
         }
     }
 
-    class Serializer : RecipeSerializer<AssemblerRecipe> {
+    class Serializer private constructor() : RecipeSerializer<AssemblerRecipe> {
         companion object {
-            fun INSTANCE() = Serializer()
-            fun ID() = "assembler"
+            val INSTANCE: Serializer = Serializer()
+            const val ID = "assembler"
         }
 
         override fun fromJson(recipeId: ResourceLocation, serializedRecipe: JsonObject): AssemblerRecipe {
             val output = ShapedRecipe.itemFromJson(GsonHelper.getAsJsonObject(serializedRecipe, "output"))
-
             val ingredients = GsonHelper.getAsJsonArray(serializedRecipe, "ingredients")
             val inputs = NonNullList.withSize(2, Ingredient.EMPTY)
 
