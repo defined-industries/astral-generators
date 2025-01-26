@@ -1,6 +1,7 @@
 package dev.definedentity.astralgenerators.blockentities.machines
 
 import dev.definedentity.astralgenerators.gui.machines.AssemblerMenu
+import dev.definedentity.astralgenerators.recipes.AssemblerRecipe
 import dev.definedentity.astralgenerators.utils.AGContainer
 import io.github.cottonmc.cotton.gui.PropertyDelegateHolder
 import io.github.fabricators_of_create.porting_lib.transfer.item.ItemStackHandler
@@ -52,8 +53,24 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
                 // tick on client side
                 return
             }
-            println("tick")
             // tick on server side
+
+            hasRecipe(entity)
+        }
+
+        fun hasRecipe(entity: AssemblerEntity) {
+            val level = entity.level!!
+            val container = object : AGContainer {
+                override fun getItems(): NonNullList<ItemStack> {
+                    return entity.items
+                }
+            }
+
+            val match = level.recipeManager.getRecipeFor(AssemblerRecipe.Type.INSTANCE(), container, level)
+
+
+            println(level.recipeManager.getAllRecipesFor(AssemblerRecipe.Type.INSTANCE()))
+            //println(match.isPresent)
         }
     }
 

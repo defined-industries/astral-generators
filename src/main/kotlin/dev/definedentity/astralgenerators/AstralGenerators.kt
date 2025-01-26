@@ -9,6 +9,7 @@ import dev.definedentity.astralgenerators.blocks.casings.AGCasings
 import dev.definedentity.astralgenerators.gui.AGMenuTypes
 import dev.definedentity.astralgenerators.items.AGItems
 import dev.definedentity.astralgenerators.material_sets.AGMaterialSets
+import dev.definedentity.astralgenerators.recipes.AGRecipes
 import dev.definedentity.astralgenerators.utils.AGIdentifier
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
@@ -36,6 +37,7 @@ object AstralGenerators : ModInitializer {
         AGBlocks.init()
         AGItems.init()
         AGMenuTypes.init()
+        AGRecipes.init()
 
         REGISTRATE.register()
 
