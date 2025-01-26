@@ -1,6 +1,10 @@
 package dev.definedentity.astralgenerators.blockentities.machines
 
+import dev.definedentity.astralgenerators.AstralGenerators
+import dev.definedentity.astralgenerators.AstralGenerators.LOGGER
+import dev.definedentity.astralgenerators.AstralGenerators.MOD_ID
 import dev.definedentity.astralgenerators.gui.machines.AssemblerMenu
+import dev.definedentity.astralgenerators.recipes.AGRecipes
 import dev.definedentity.astralgenerators.recipes.AssemblerRecipe
 import dev.definedentity.astralgenerators.utils.AGContainer
 import io.github.cottonmc.cotton.gui.PropertyDelegateHolder
@@ -36,8 +40,11 @@ import java.util.stream.IntStream
 import javax.swing.plaf.basic.BasicComboBoxUI
 import kotlin.properties.PropertyDelegateProvider
 
+
 class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, state: BlockState) :
     BlockEntity(type, pos, state), MenuProvider, AGContainer, PropertyDelegateHolder {
+
+
 
     companion object {
         const val CONTAINER_SIZE = 10
@@ -66,10 +73,11 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
                 }
             }
 
-            val match = level.recipeManager.getRecipeFor(AssemblerRecipe.Type.INSTANCE(), container, level)
+            val match = level.recipeManager.getRecipeFor(AssemblerRecipe.Type.INSTANCE, container, level)
 
 
-            println(level.recipeManager.getAllRecipesFor(AssemblerRecipe.Type.INSTANCE()))
+            //println(level.recipeManager.getAllRecipesFor(AssemblerRecipe.Type.INSTANCE))
+            LOGGER.info(level.recipeManager.getAllRecipesFor(AssemblerRecipe.Type.INSTANCE).toString());
             //println(match.isPresent)
         }
     }
