@@ -19,13 +19,9 @@ class AssemblerRecipe(val recipeId: ResourceLocation, val output: ItemStack, val
     Recipe<AGContainer> {
 
     override fun matches(container: AGContainer, level: Level): Boolean {
-        if (inputs[0].test(container.getItem(0))) {
-            return inputs[1].test(container.getItem(1))
+        return (0..8).all { i ->
+            inputs[i].test(container.getItem(i))
         }
-
-        // TODO: Browse all slots
-
-        return false
     }
 
     override fun assemble(container: AGContainer): ItemStack {
@@ -68,7 +64,7 @@ class AssemblerRecipe(val recipeId: ResourceLocation, val output: ItemStack, val
         override fun fromJson(recipeId: ResourceLocation, serializedRecipe: JsonObject): AssemblerRecipe {
             val output = ShapedRecipe.itemFromJson(GsonHelper.getAsJsonObject(serializedRecipe, "output"))
             val ingredients = GsonHelper.getAsJsonArray(serializedRecipe, "ingredients")
-            val inputs = NonNullList.withSize(2, Ingredient.EMPTY)
+            val inputs = NonNullList.withSize(9, Ingredient.EMPTY)
 
             for (i in inputs.indices) {
                 inputs[i] = Ingredient.fromJson(ingredients.get(i))

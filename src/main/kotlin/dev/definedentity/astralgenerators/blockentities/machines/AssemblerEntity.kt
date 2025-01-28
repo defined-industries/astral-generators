@@ -45,7 +45,6 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
     BlockEntity(type, pos, state), MenuProvider, AGContainer, PropertyDelegateHolder {
 
 
-
     companion object {
         const val CONTAINER_SIZE = 10
         const val CONTAINER_DATA_SIZE = 4
@@ -62,10 +61,20 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
             }
             // tick on server side
 
-            hasRecipe(entity)
+            // TODO: custom energy usage
+            if(entity.energyStorage.amount < 1000) return
+
+            if (hasRecipe(entity)) {
+                entity.progress++
+                if (entity.progress > MAX_PROGRESS) {
+                    craftItem(entity)
+                }
+            } else {
+                entity.resetProgress()
+            }
         }
 
-        fun hasRecipe(entity: AssemblerEntity) {
+        fun hasRecipe(entity: AssemblerEntity): Boolean {
             val level = entity.level!!
             val container = object : AGContainer {
                 override fun getItems(): NonNullList<ItemStack> {
@@ -75,10 +84,41 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
 
             val match = level.recipeManager.getRecipeFor(AssemblerRecipe.Type.INSTANCE, container, level)
 
+            return match.isPresent && canInsertItemIntoOutputSlot(
+                container,
+                match.get().output
+            ) && canInsertAmountIntoOutputSlot(container)
+        }
 
-            //println(level.recipeManager.getAllRecipesFor(AssemblerRecipe.Type.INSTANCE))
-            LOGGER.info(level.recipeManager.getAllRecipesFor(AssemblerRecipe.Type.INSTANCE).toString());
-            //println(match.isPresent)
+
+        private fun craftItem(entity: AssemblerEntity) {
+            val level = entity.level!!
+            val container = object : AGContainer {
+                override fun getItems(): NonNullList<ItemStack> {
+                    return entity.items
+                }
+            }
+
+            val match = level.recipeManager.getRecipeFor(AssemblerRecipe.Type.INSTANCE, container, level)
+
+            if (match.isPresent) {
+                (0..8).forEach { slot ->
+                    entity.removeItem(slot, 1)
+                }
+
+                entity.setItem(9, ItemStack(match.get().output.item, entity.getItem(9).count + 1))
+                entity.energyStorage.amount -= 1000
+                entity.resetProgress()
+            }
+
+        }
+
+        private fun canInsertItemIntoOutputSlot(container: AGContainer, output: ItemStack): Boolean {
+            return container.getItem(9).item == output.item || container.getItem(9).isEmpty
+        }
+
+        private fun canInsertAmountIntoOutputSlot(container: AGContainer): Boolean {
+            return container.getItem(9).maxStackSize > container.getItem(9).count
         }
     }
 
@@ -120,6 +160,10 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
         override fun onFinalCommit() {
             setChanged()
         }
+    }
+
+    fun resetProgress() {
+        progress = 0
     }
 
     override fun setChanged() {

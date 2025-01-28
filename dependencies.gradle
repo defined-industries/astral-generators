@@ -2,11 +2,6 @@ dependencies {
     setup(dependencies)
     devEnv(dependencies)
     modDeps(dependencies)
-    recipeViewer(dependencies)
-}
-
-def recipeViewer(DependencyHandler deps) {
-    deps.modLocalRuntime("me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}")
 }
 
 def modDeps(DependencyHandler deps) {
@@ -22,13 +17,16 @@ def modDeps(DependencyHandler deps) {
     }
     deps.modApi(deps.include("me.alphamode:ForgeTags:$forge_tags_version"))
     deps.modApi(deps.include("teamreborn:energy:${energy_api}"))
+
+    deps.modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:$rei_version"
+    deps.modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:$rei_version"
+    deps.modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version"
 }
 
 def devEnv(DependencyHandler deps) {
     deps.modLocalRuntime("maven.modrinth:lazydfu:${lazydfu_version}")
     deps.modLocalRuntime("com.terraformersmc:modmenu:${modmenu_version}")
     deps.modLocalRuntime("maven.modrinth:ctm-refabricated:${ctm_refabricated_version}")
-    deps.modLocalRuntime("me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}")
     deps.modLocalRuntime("maven.modrinth:jade:${jade_version}")
     deps.modLocalRuntime("maven.modrinth:jade-addons-fabric:${jade_addon_version}")
 }

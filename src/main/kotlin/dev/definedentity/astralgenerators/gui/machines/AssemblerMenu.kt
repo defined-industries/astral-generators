@@ -68,7 +68,8 @@ class AssemblerMenu(syncId: Int, playerInventory: Inventory, ctx: ContainerLevel
             AGIdentifier("textures/gui/widget_progress_empty.png"),
             AGIdentifier("textures/gui/widget_progress_full.png"),
             2,
-            3
+            3,
+            WBar.Direction.RIGHT
         )
         root.add(
             progressBar, 6, 2, 1, 1
