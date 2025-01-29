@@ -29,36 +29,29 @@ class AssemblerCategory : DisplayCategory<AssemblerDisplay> {
 
     override fun setupDisplay(display: AssemblerDisplay?, bounds: Rectangle?): MutableList<Widget> {
         val widgets = mutableListOf<Widget>()
-        
 
         widgets.add(Widgets.createRecipeBase(bounds))
 
         if (bounds != null) {
             if (display != null) {
-                for (i in 0 until 4) {
-                    widgets.add(
-                        Widgets.createSlot(Point(bounds.x + 10, bounds.y + 5 + i * 18))
-                            .entries(display.inputEntries[i])
-                            .markInput()
-                    )
+                for (row in 0 until 3) {
+                    for (col in 0 until 3) {
+                        val index = row * 3 + col
+                        widgets.add(
+                            Widgets.createSlot(
+                                Point(
+                                    bounds.x + 30 + 10 + col * 18,
+                                    bounds.y + 15 + row * 18
+                                )
+                            ).entries(display.inputEntries[index])
+                                .markInput()
+                        )
+                    }
                 }
 
-                for (i in 0 until 4) {
-                    widgets.add(
-                        Widgets.createSlot(Point(bounds.x + 130, bounds.y + 5 + i * 18))
-                            .entries(display.inputEntries[i + 4])
-                            .markInput()
-                    )
-                }
 
                 widgets.add(
-                    Widgets.createSlot(Point(bounds.x + 70, bounds.y + 10))
-                        .entries(display.inputEntries[8])
-                        .markInput()
-                )
-
-                widgets.add(
-                    Widgets.createSlot(Point(bounds.x + 70, bounds.y + 40))
+                    Widgets.createSlot(Point(bounds.x + 30 + 78, bounds.y + 33))
                         .entries(display.outputEntries[0])
                         .markOutput()
                         .disableBackground()
