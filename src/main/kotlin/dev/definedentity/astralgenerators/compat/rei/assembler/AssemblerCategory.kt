@@ -73,4 +73,8 @@ class AssemblerCategory : DisplayCategory<AssemblerDisplay> {
     override fun getDisplayHeight(): Int {
         return 80
     }
+
+    override fun getDisplayWidth(display: AssemblerDisplay?): Int {
+        return 155
+    }
 }
