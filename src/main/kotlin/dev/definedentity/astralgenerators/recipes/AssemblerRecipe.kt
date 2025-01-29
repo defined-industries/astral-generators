@@ -1,6 +1,5 @@
 package dev.definedentity.astralgenerators.recipes
 
-import com.google.gson.Gson
 import com.google.gson.JsonObject
 import dev.definedentity.astralgenerators.utils.AGContainer
 import net.minecraft.core.NonNullList
@@ -8,15 +7,13 @@ import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.util.GsonHelper
 import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.crafting.Ingredient
-import net.minecraft.world.item.crafting.Recipe
-import net.minecraft.world.item.crafting.RecipeSerializer
-import net.minecraft.world.item.crafting.RecipeType
-import net.minecraft.world.item.crafting.ShapedRecipe
+import net.minecraft.world.item.crafting.*
 import net.minecraft.world.level.Level
+import org.intellij.lang.annotations.Identifier
 
-class AssemblerRecipe(val recipeId: ResourceLocation, val output: ItemStack, val inputs: NonNullList<Ingredient>) :
-    Recipe<AGContainer> {
+class AssemblerRecipe(val recipeId: ResourceLocation, val output: ItemStack, val inputs: NonNullList<Ingredient>) : Recipe<AGContainer> {
+
+
 
     override fun matches(container: AGContainer, level: Level): Boolean {
         return (0..8).all { i ->
@@ -46,6 +43,14 @@ class AssemblerRecipe(val recipeId: ResourceLocation, val output: ItemStack, val
 
     override fun getType(): RecipeType<*> {
         return Type.INSTANCE
+    }
+
+    fun getOutputItem(): ItemStack {
+        return output
+    }
+
+    fun getInputItems(): NonNullList<Ingredient> {
+        return inputs
     }
 
     class Type private constructor() : RecipeType<AssemblerRecipe> {
