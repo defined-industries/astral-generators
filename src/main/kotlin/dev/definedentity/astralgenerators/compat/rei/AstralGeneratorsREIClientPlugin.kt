@@ -1,6 +1,5 @@
 package dev.definedentity.astralgenerators.compat.rei
 
-import dev.definedentity.astralgenerators.blocks.AGBlocks
 import dev.definedentity.astralgenerators.blocks.machines.AGMachines
 import dev.definedentity.astralgenerators.compat.rei.assembler.AssemblerCategory
 import dev.definedentity.astralgenerators.compat.rei.assembler.AssemblerDisplay
@@ -11,7 +10,6 @@ import me.shedaniel.rei.api.client.registry.category.CategoryRegistry
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry
 import me.shedaniel.rei.api.client.registry.screen.ScreenRegistry
 import me.shedaniel.rei.api.common.category.CategoryIdentifier
-import me.shedaniel.rei.api.common.entry.EntryStack
 import me.shedaniel.rei.api.common.util.EntryStacks
 import net.minecraft.client.Minecraft
 
