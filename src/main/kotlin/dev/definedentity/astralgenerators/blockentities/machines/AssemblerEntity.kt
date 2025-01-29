@@ -6,6 +6,7 @@ import dev.definedentity.astralgenerators.AstralGenerators.MOD_ID
 import dev.definedentity.astralgenerators.gui.machines.AssemblerMenu
 import dev.definedentity.astralgenerators.recipes.AGRecipes
 import dev.definedentity.astralgenerators.recipes.AssemblerRecipe
+import dev.definedentity.astralgenerators.sounds.AGSounds
 import dev.definedentity.astralgenerators.utils.AGContainer
 import io.github.cottonmc.cotton.gui.PropertyDelegateHolder
 import io.github.fabricators_of_create.porting_lib.transfer.item.ItemStackHandler
@@ -13,6 +14,8 @@ import io.github.fabricators_of_create.porting_lib.util.LazyOptional
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage
+import net.minecraft.client.Minecraft
+import net.minecraft.client.resources.sounds.SoundInstance
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.NonNullList
@@ -21,6 +24,7 @@ import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.TextComponent
 import net.minecraft.network.chat.TranslatableComponent
+import net.minecraft.sounds.SoundSource
 import net.minecraft.world.ContainerHelper
 import net.minecraft.world.MenuProvider
 import net.minecraft.world.WorldlyContainer
@@ -62,9 +66,10 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
             // tick on server side
 
             // TODO: custom energy usage
-            if(entity.energyStorage.amount < 1000) return
+            if (entity.energyStorage.amount < 1000) return
 
             if (hasRecipe(entity)) {
+                level.playSound(null, pos, AGSounds.ASSEMBLER, SoundSource.BLOCKS, 1f, 1f)
                 entity.progress++
                 if (entity.progress > MAX_PROGRESS) {
                     craftItem(entity)

@@ -4,13 +4,15 @@ pkgs ? import <nixpkgs> {}
 pkgs.mkShell {
     nativeBuildInputs =  with pkgs; [
         openjdk17
-        libGL
+        libgl
+        pipewire
     ];
 
     shellHook = ''
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${
             pkgs.lib.makeLibraryPath [
-              pkgs.libGL
+              libgl
+              pipewire
             ]
          };
 
