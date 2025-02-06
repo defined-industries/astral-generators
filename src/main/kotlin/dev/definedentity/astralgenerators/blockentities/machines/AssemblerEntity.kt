@@ -3,6 +3,7 @@ package dev.definedentity.astralgenerators.blockentities.machines
 import dev.definedentity.astralgenerators.AstralGenerators
 import dev.definedentity.astralgenerators.AstralGenerators.LOGGER
 import dev.definedentity.astralgenerators.AstralGenerators.MOD_ID
+import dev.definedentity.astralgenerators.blocks.machines.Assembler
 import dev.definedentity.astralgenerators.gui.machines.AssemblerMenu
 import dev.definedentity.astralgenerators.recipes.AGRecipes
 import dev.definedentity.astralgenerators.recipes.AssemblerRecipe
@@ -46,7 +47,7 @@ import kotlin.properties.PropertyDelegateProvider
 
 
 class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, state: BlockState) :
-    BlockEntity(type, pos, state), MenuProvider, AGContainer, PropertyDelegateHolder {
+    BlockEntity(type, pos, state), MenuProvider, AGContainer, PropertyDelegateHolder, WorldlyContainer {
 
 
     companion object {
@@ -69,13 +70,15 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
             if (entity.energyStorage.amount < 1000) return
 
             if (hasRecipe(entity)) {
-                level.playSound(null, pos, AGSounds.ASSEMBLER, SoundSource.BLOCKS, 1f, 1f)
+                updateActiveState(entity, true)
                 entity.progress++
+                level.playSound(null, pos, AGSounds.ASSEMBLER, SoundSource.BLOCKS, 1f, 1f)
                 if (entity.progress > MAX_PROGRESS) {
                     craftItem(entity)
                 }
             } else {
                 entity.resetProgress()
+                updateActiveState(entity, false)
             }
         }
 
@@ -125,6 +128,17 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
         private fun canInsertAmountIntoOutputSlot(container: AGContainer): Boolean {
             return container.getItem(9).maxStackSize > container.getItem(9).count
         }
+
+        private fun updateActiveState(entity: AssemblerEntity, active: Boolean) {
+            val lvl = entity.level!!
+            // Get the current block state
+            val currentState = lvl.getBlockState(entity.blockPos)
+            // Create a new state with the updated 'active' property
+            val newState = currentState.setValue(Assembler.ACTIVE, active)
+            // Update the block state in the world
+            lvl.setBlock(entity.blockPos, newState, 3)
+            entity.setChanged()
+        }
     }
 
     private var progress = 0
@@ -171,7 +185,25 @@ class AssemblerEntity(type: BlockEntityType<AssemblerEntity>, pos: BlockPos, sta
         progress = 0
     }
 
+    override fun getSlotsForFace(side: Direction): IntArray {
+        return if (side == Direction.UP) {
+            IntArray(9) { it }
+        } else {
+            intArrayOf(9)
+        }
+    }
+
+    override fun canPlaceItemThroughFace(index: Int, itemStack: ItemStack, direction: Direction?): Boolean {
+        return direction == Direction.UP && index in 0..8
+    }
+
+    override fun canTakeItemThroughFace(index: Int, stack: ItemStack, direction: Direction): Boolean {
+        return direction != Direction.UP && index == 9
+    }
+
     override fun setChanged() {
+        super<BlockEntity>.setChanged();
+        level!!.sendBlockUpdated(blockPos, blockState, blockState, 3)
     }
 
     override fun getPropertyDelegate(): ContainerData {
