@@ -1,33 +1,15 @@
 {
   "type": "astralgenerators:assembler",
-  "ingredients": [
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:dirt"
-    },
-    {
-      "item": "minecraft:sand"
-    },
-    {
-      "item": "minecraft:glass"
-    },
-    {
-      "item": "minecraft:black_wool"
-    },
-    {
-      "item": "minecraft:gravel"
-    },
-    {
-      "item": "minecraft:oak_planks"
-    },
-    {
-      "item": "minecraft:granite"
-    },
-    {
-      "item": "minecraft:diamond_block"
-    }
+  "inputs": [
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:dirt" },
+    { "item": "minecraft:sand" },
+    { "item": "minecraft:glass" },
+    { "item": "minecraft:black_wool" },
+    { "item": "minecraft:gravel" },
+    { "item": "minecraft:oak_planks" },
+    { "item": "minecraft:granite" },
+    { "item": "minecraft:diamond_block" }
   ],
   "output": {
     "item": "minecraft:apple"

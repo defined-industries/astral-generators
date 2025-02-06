@@ -1,33 +1,15 @@
 {
   "type": "astralgenerators:assembler",
-  "ingredients": [
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    }
+  "inputs": [
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" },
+    { "item": "minecraft:stone" }
   ],
   "output": {
     "item": "minecraft:apple"
