@@ -2,17 +2,14 @@ package dev.definedentity.astralgenerators.recipes
 
 import com.google.common.collect.HashMultiset
 import com.google.gson.JsonObject
-import com.google.gson.JsonSyntaxException
 import dev.definedentity.astralgenerators.utils.AGContainer
 import net.minecraft.core.NonNullList
-import net.minecraft.core.Registry
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.util.GsonHelper
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.*
 import net.minecraft.world.level.Level
-import org.intellij.lang.annotations.Identifier
 
 class AssemblerRecipe(val recipeId: ResourceLocation, val output: ItemStack, val inputs: NonNullList<Ingredient>) : Recipe<AGContainer> {
 
