@@ -19,6 +19,7 @@
   "block.astralgenerators.fusion_reactor_input_hatch": "Fusion Reactor Input Hatch",
   "block.astralgenerators.fusion_reactor_output_bus": "Fusion Reactor Output Bus",
   "block.astralgenerators.fusion_reactor_output_hatch": "Fusion Reactor Output Hatch",
+  "block.astralgenerators.steam": "Steam",
   "block.astralgenerators.steam_turbine_casing": "Steam Turbine Casing",
   "block.astralgenerators.steam_turbine_controller": "Steam Turbine Controller",
   "block.astralgenerators.steam_turbine_energy_output_hatch": "Steam Turbine Energy Output Hatch",

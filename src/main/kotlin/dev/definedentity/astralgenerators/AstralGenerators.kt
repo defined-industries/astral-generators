@@ -6,6 +6,7 @@ import dev.definedentity.astralgenerators.blockentities.AGBlockEntities.ASSEMBLE
 import dev.definedentity.astralgenerators.blockentities.machines.AssemblerEntity
 import dev.definedentity.astralgenerators.blocks.AGBlocks
 import dev.definedentity.astralgenerators.blocks.casings.AGCasings
+import dev.definedentity.astralgenerators.fluids.AGFluids
 import dev.definedentity.astralgenerators.gui.AGMenuTypes
 import dev.definedentity.astralgenerators.items.AGItems
 import dev.definedentity.astralgenerators.material_sets.AGMaterialSets
@@ -37,6 +38,7 @@ object AstralGenerators : ModInitializer {
         AGMaterialSets.init()
         AGBlocks.init()
         AGItems.init()
+        AGFluids.init()
         AGMenuTypes.init()
         AGRecipes.init()
         AGSounds.init()
