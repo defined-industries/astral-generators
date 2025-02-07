@@ -1,5 +1,6 @@
 package dev.definedentity.astralgenerators.recipes
 
+import com.google.common.collect.HashMultiset
 import com.google.gson.JsonObject
 import dev.definedentity.astralgenerators.utils.AGContainer
 import net.minecraft.core.NonNullList
@@ -9,16 +10,26 @@ import net.minecraft.util.GsonHelper
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.*
 import net.minecraft.world.level.Level
-import org.intellij.lang.annotations.Identifier
 
 class AssemblerRecipe(val recipeId: ResourceLocation, val output: ItemStack, val inputs: NonNullList<Ingredient>) : Recipe<AGContainer> {
 
 
 
     override fun matches(container: AGContainer, level: Level): Boolean {
-        return (0..8).all { i ->
-            inputs[i].test(container.getItem(i))
+        val containerItems = (0..8).map { container.getItem(it) }
+        val containerMultiset = HashMultiset.create<ItemStack>()
+
+        containerItems.filter { !it.isEmpty }.forEach { containerMultiset.add(it) }
+
+        for (input in inputs) {
+            val match = containerMultiset.elementSet().find { item -> input.test(item) }
+            if (match != null && containerMultiset.count(match) > 0) {
+                containerMultiset.remove(match)  // Remove one occurrence
+            } else {
+                return false  // Input not found
+            }
         }
+        return true
     }
 
     override fun assemble(container: AGContainer): ItemStack {
@@ -60,44 +71,34 @@ class AssemblerRecipe(val recipeId: ResourceLocation, val output: ItemStack, val
         }
     }
 
-    class Serializer private constructor() : RecipeSerializer<AssemblerRecipe> {
-        companion object {
-            val INSTANCE: Serializer = Serializer()
-            const val ID = "assembler"
-        }
+    object Serializer : RecipeSerializer<AssemblerRecipe> {
+        override fun fromJson(recipeId: ResourceLocation, json: JsonObject): AssemblerRecipe {
+            val output = ShapedRecipe.itemFromJson(GsonHelper.getAsJsonObject(json, "output"))
 
-        override fun fromJson(recipeId: ResourceLocation, serializedRecipe: JsonObject): AssemblerRecipe {
-            val output = ShapedRecipe.itemFromJson(GsonHelper.getAsJsonObject(serializedRecipe, "output"))
-            val ingredients = GsonHelper.getAsJsonArray(serializedRecipe, "ingredients")
-            val inputs = NonNullList.withSize(9, Ingredient.EMPTY)
-
-            for (i in inputs.indices) {
-                inputs[i] = Ingredient.fromJson(ingredients.get(i))
+            val inputsJson = GsonHelper.getAsJsonArray(json, "inputs")
+            val inputs = NonNullList.create<Ingredient>().apply {
+                inputsJson.forEach { add(Ingredient.fromJson(it)) }
             }
 
             return AssemblerRecipe(recipeId, output.defaultInstance, inputs)
         }
 
         override fun fromNetwork(recipeId: ResourceLocation, buffer: FriendlyByteBuf): AssemblerRecipe {
-            val inputs = NonNullList.withSize(buffer.readInt(), Ingredient.EMPTY)
-
-            for (i in inputs.indices) {
-                inputs[i] = Ingredient.fromNetwork(buffer)
-            }
-
+            val inputCount = buffer.readInt()
+            val inputs = NonNullList.withSize(inputCount, Ingredient.EMPTY)
+            repeat(inputCount) { inputs[it] = Ingredient.fromNetwork(buffer) }
             val output = buffer.readItem()
 
             return AssemblerRecipe(recipeId, output, inputs)
         }
 
         override fun toNetwork(buffer: FriendlyByteBuf, recipe: AssemblerRecipe) {
-            buffer.writeInt(recipe.ingredients.size)
-
-            for (ingredient in recipe.ingredients) {
-                ingredient.toNetwork(buffer)
-            }
+            buffer.writeInt(recipe.inputs.size)
+            recipe.inputs.forEach { it.toNetwork(buffer) }
             buffer.writeItem(recipe.output)
         }
 
+        val INSTANCE = this
+        const val ID = "assembler"
     }
 }
