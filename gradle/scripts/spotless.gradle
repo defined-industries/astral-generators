@@ -13,16 +13,6 @@ spotless {
         }
     }
 
-    json {
-        target 'src/*/resources/**/*.json'
-        targetExclude 'src/generated/resources/**'
-
-        indentWithSpaces(2)
-        endWithNewline()
-
-        biome().downloadDir(new File(rootDir, ".gradle/biome").absolutePath)
-    }
-
     format("dotfiles") {
         target(".gitignore", ".gitattributes", ".editorconfig")
         trimTrailingWhitespace()
