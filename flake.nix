@@ -11,12 +11,10 @@
         libpulseaudio
         libGL
         glfw
-        openal
-        stdenv.cc.cc.lib
       ];
   in {
     devShell.x86_64-linux = pkgs.mkShell {
-      packages = [];
+      packages = with pkgs;[corretto21];
       buildInputs = libs;
       LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath libs;
     };

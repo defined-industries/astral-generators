@@ -1,22 +1,21 @@
 spotless {
     encoding "UTF-8"
 
+    format("dotfiles") {
+        target(".gitignore", ".gitattributes", ".editorconfig")
+
+        trimTrailingWhitespace()
+        leadingTabsToSpaces()
+        endWithNewline()
+    }
+
     kotlin {
         target "src/*/kotlin/astralgenerators/**/*.kt"
 
-        endWithNewline()
-        indentWithSpaces()
+        ktlint("1.4.1").setEditorConfigPath("$rootDir/spotless/spotless.ktlint")
+
         toggleOffOn()
-
-        ktfmt().kotlinlangStyle().configure {
-            it.removeUnusedImports = true
-        }
-    }
-
-    format("dotfiles") {
-        target(".gitignore", ".gitattributes", ".editorconfig")
-        trimTrailingWhitespace()
-        indentWithSpaces(4)
+        leadingTabsToSpaces()
         endWithNewline()
     }
 }

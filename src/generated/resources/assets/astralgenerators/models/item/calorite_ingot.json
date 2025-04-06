@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "astralgenerators:item/material_sets/ingot",
-    "layer1": "astralgenerators:item/material_sets/ingot_overlay",
-    "layer2": "astralgenerators:item/material_sets/ingot_secondary"
-  }
-}

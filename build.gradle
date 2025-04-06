@@ -1,51 +1,37 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    alias libs.plugins.fabric
-    alias libs.plugins.kotlin
-    alias libs.plugins.spotless
-    alias libs.plugins.machete
-
-    id "maven-publish"
-    id "idea"
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.gradle.userdev' version '7.0.184'
+    id 'org.jetbrains.kotlin.jvm' version '2.1.20'
+    id 'com.diffplug.spotless' version '7.0.2'
 }
 
-String buildNumber = System.getenv("GITHUB_RUN_NUMBER")
-
-version = "${mod_version}" + (buildNumber != null ? ".${buildNumber}" : "")
-group = project.maven_group
-
-configurations.configureEach {
-    resolutionStrategy {
-        force("net.fabricmc:fabric-loader:${project.loader_version}")
-    }
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
 }
+
+version = mod_version
+group = mod_group_id
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 apply from: "$rootDir/gradle/scripts/moddevgradle.gradle"
+apply from: "$rootDir/dependencies.gradle"
 apply from: "$rootDir/gradle/scripts/repositories.gradle"
-apply from: "dependencies.gradle"
+apply from: "$rootDir/gradle/scripts/spotless.gradle"
 apply from: "$rootDir/gradle/scripts/resources.gradle"
 apply from: "$rootDir/gradle/scripts/jars.gradle"
-apply from: "$rootDir/gradle/scripts/spotless.gradle"
+apply from: "$rootDir/gradle/scripts/publishing.gradle"
 
-// Java
+//minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
+//minecraft.accessTransformers.entry public net.minecraft.client.Minecraft textureManager # textureManager
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
 tasks.withType(JavaCompile).configureEach {
-    options.release = 17
     options.encoding = "UTF-8"
 }
 
-tasks.withType(KotlinCompile).configureEach {
-    kotlinOptions {
-        jvmTarget = 17
-    }
-}
-
-java {
-    withSourcesJar()
-
-}
-
-// IDEA
 idea {
     module {
         downloadSources = true

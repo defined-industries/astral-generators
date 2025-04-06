@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "astralgenerators:block/coils/fusion_reactor_coil"
-  }
-}

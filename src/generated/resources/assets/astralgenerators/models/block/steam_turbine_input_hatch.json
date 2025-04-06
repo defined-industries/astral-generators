@@ -1,7 +1,0 @@
-{
-  "parent": "astralgenerators:block/cube_2_layer/all",
-  "textures": {
-    "bot_all": "astralgenerators:block/casings/steam_turbine_casing",
-    "top_all": "astralgenerators:block/overlays/overlay_fluid_input"
-  }
-}

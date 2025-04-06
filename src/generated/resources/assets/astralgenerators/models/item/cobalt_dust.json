@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "astralgenerators:item/material_sets/dust",
-    "layer1": "astralgenerators:item/material_sets/dust_overlay",
-    "layer2": "astralgenerators:item/material_sets/dust_secondary"
-  }
-}
